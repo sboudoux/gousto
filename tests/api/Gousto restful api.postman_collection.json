@@ -1,0 +1,1452 @@
+{
+	"info": {
+		"_postman_id": "9762311d-81a3-499c-b499-dba7d9001d65",
+		"name": "Gousto restful api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Adding recipe",
+			"item": [
+				{
+					"name": "Success - created recipe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "calories_kcal",
+									"value": "687",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								},
+								{
+									"key": "protein_grams",
+									"value": "236",
+									"type": "text"
+								},
+								{
+									"key": "fat_grams",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "carbs_grams",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "preparation_time_minutes",
+									"value": "78",
+									"type": "text"
+								},
+								{
+									"key": "shelf_life_days",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "gousto_reference",
+									"value": "789",
+									"type": "text"
+								},
+								{
+									"key": "recipe_cuisine",
+									"value": "italian",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe"
+							]
+						},
+						"description": "Successful recipe creation"
+					},
+					"response": []
+				},
+				{
+					"name": "Success - failure due to recipe_cuisine",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "calories_kcal",
+									"value": "687",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								},
+								{
+									"key": "protein_grams",
+									"value": "236",
+									"type": "text"
+								},
+								{
+									"key": "fat_grams",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "carbs_grams",
+									"value": "89",
+									"type": "text"
+								},
+								{
+									"key": "preparation_time_minutes",
+									"value": "35",
+									"type": "text"
+								},
+								{
+									"key": "shelf_life_days",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "gousto_reference",
+									"value": "789",
+									"type": "text"
+								},
+								{
+									"key": "recipe_cuisine",
+									"value": "italiannn",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - failure due to missing rquired data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "calories_kcal",
+									"value": "687",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								},
+								{
+									"key": "protein_grams",
+									"value": "236",
+									"type": "text"
+								},
+								{
+									"key": "fat_grams",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "carbs_grams",
+									"value": "89",
+									"type": "text"
+								},
+								{
+									"key": "preparation_time_minutes",
+									"value": "35",
+									"type": "text"
+								},
+								{
+									"key": "shelf_life_days",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "gousto_reference",
+									"value": "789",
+									"type": "text"
+								},
+								{
+									"key": "recipe_cuisine",
+									"value": "italian",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fetching recipies",
+			"item": [
+				{
+					"name": "Success - fetching filtered \"italian\"",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/cuisine/italian/2/2",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"cuisine",
+								"italian",
+								"2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - filtered italian / paginated p1-#3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/cuisine/italian/1/3",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"cuisine",
+								"italian",
+								"1",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - filtered \"italian\" paginated p2 -#3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/cuisine/italian/2/3?gousto-auth-token=abcdef123456",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"cuisine",
+								"italian",
+								"2",
+								"3"
+							],
+							"query": [
+								{
+									"key": "gousto-auth-token",
+									"value": "abcdef123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uccess - filtered \"british\"  p3 - #20 (no results)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/cuisine/british/3/20",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"cuisine",
+								"british",
+								"3",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - fetch single by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/12",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - fetch single + 204 No Content",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/666",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"666"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "684cc871-2a6d-4e7f-9e87-3df294ebdcdf",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8415dc8-b718-462a-a525-4be8dab4968d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Rating recipe",
+			"item": [
+				{
+					"name": "Success - rating saved",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "calories_kcal",
+									"value": "687",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								},
+								{
+									"key": "protein_grams",
+									"value": "236",
+									"type": "text"
+								},
+								{
+									"key": "fat_grams",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "carbs_grams",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "preparation_time_minutes",
+									"value": "35",
+									"type": "text"
+								},
+								{
+									"key": "shelf_life_days",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "gousto_reference",
+									"value": "789",
+									"type": "text"
+								},
+								{
+									"key": "recipe_cuisine",
+									"value": "italian",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "An amazing recipe for you\n",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/6/rate/4",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"6",
+								"rate",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - 204 for unknown recipe",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/666/rate/5",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"666",
+								"rate",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - 404 for rating out of range",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/6/rate/6",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"6",
+								"rate",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Updating a recipe",
+			"item": [
+				{
+					"name": "Success - update recipe ",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "calories_kcal",
+									"value": "687",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								},
+								{
+									"key": "protein_grams",
+									"value": "236",
+									"type": "text"
+								},
+								{
+									"key": "fat_grams",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "carbs_grams",
+									"value": "89",
+									"type": "text"
+								},
+								{
+									"key": "preparation_time_minutes",
+									"value": "35",
+									"type": "text"
+								},
+								{
+									"key": "shelf_life_days",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "gousto_reference",
+									"value": "789",
+									"type": "text"
+								},
+								{
+									"key": "recipe_cuisine",
+									"value": "italian",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "An amazing recipe for you\n",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/6",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - failed on missing ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "calories_kcal",
+									"value": "687",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								},
+								{
+									"key": "protein_grams",
+									"value": "236",
+									"type": "text"
+								},
+								{
+									"key": "fat_grams",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "carbs_grams",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "preparation_time_minutes",
+									"value": "35",
+									"type": "text"
+								},
+								{
+									"key": "shelf_life_days",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "gousto_reference",
+									"value": "789",
+									"type": "text"
+								},
+								{
+									"key": "recipe_cuisine",
+									"value": "italiann",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "An amazing recipe for you\n",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/6",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - fails on missing / incorrect data (cuisine type)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "calories_kcal",
+									"value": "687",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								},
+								{
+									"key": "protein_grams",
+									"value": "236",
+									"type": "text"
+								},
+								{
+									"key": "fat_grams",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "carbs_grams",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "preparation_time_minutes",
+									"value": "35",
+									"type": "text"
+								},
+								{
+									"key": "shelf_life_days",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "gousto_reference",
+									"value": "789",
+									"type": "text"
+								},
+								{
+									"key": "recipe_cuisine",
+									"value": "italiann",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "An amazing recipe for you\n",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/recipe/6",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"recipe",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "App - framework & routing setup",
+			"item": [
+				{
+					"name": "Success - Info / POC",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/app/info",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"app",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success - fails on 401 without auth token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "gousto-auth-token",
+								"value": "abcdef123456",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "That's a very good recipe!!! ",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " snails and slugs rocks  ",
+									"type": "text"
+								},
+								{
+									"key": "short_title",
+									"value": "pastatatatatat",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ninja",
+									"value": "shinKiller",
+									"type": "text"
+								},
+								{
+									"key": "saussage",
+									"value": "yuppers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://phalcon.api.gousto/app/info",
+							"protocol": "https",
+							"host": [
+								"phalcon",
+								"api",
+								"gousto"
+							],
+							"path": [
+								"app",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,85 @@
+server {
+        listen       80;
+        listen       443 ssl http2;
+        server_name  phalcon.api.gousto;
+        root         /srv/www/phalconApi/public;
+        index        index.html index.php index.volt;
+
+        access_log /var/log/nginx/access.log compression;
+        error_log /var/log/nginx/error.log;
+
+        ssl on;
+        ssl_certificate /etc/nginx/ssl/server.crt;
+        ssl_certificate_key /etc/nginx/ssl/server.key;
+
+
+
+  location / {
+        # required now because we have Phalcon index.php & ionic index.html in the same folder
+        index index.php index.html;
+
+         if ($request_method = OPTIONS ) {
+                add_header "Access-Control-Allow-Origin"  *;
+                add_header "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS";
+                add_header "Access-Control-Allow-Headers" "Authorization, Origin, X-Requested-With, Content-Type, Accept";
+                return 200;
+        }
+
+        if ($ssl_protocol = "") {
+                rewrite ^ https://$server_name$request_uri permanent;
+        }
+
+       try_files $uri $uri/ /index.php?_url=$uri&$args;
+    }
+
+
+    try_files $uri $uri/ index.php;
+
+    location @phalcon {
+        rewrite ^/(.*)$ /index.php?_url=/$1;
+    }
+
+    client_max_body_size 2000M;
+
+    # Remove trailing slash to please routing system.
+    if (!-d $request_filename) {
+        rewrite     ^/(.+)/$ /$1 permanent;
+    }
+
+    # redirect server error pages to the static page /40x.html
+    #
+    error_page  404              /404.html;
+    location = /40x.html {
+    }
+
+    # redirect server error pages to the static page /50x.html
+    #
+    #error_page   500 502 503 504  /50x.html;
+    #location = /50x.html {
+    #}
+
+    location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_pass unix:/var/run/php-fpm-dk.sock;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+
+            fastcgi_intercept_errors        on;
+            fastcgi_ignore_client_abort     off;
+
+            fastcgi_connect_timeout                 6000;
+            fastcgi_send_timeout                    6000;
+            fastcgi_read_timeout                    6000;
+            fastcgi_buffer_size                     256k;
+            fastcgi_buffers                                 4 256k;
+            fastcgi_busy_buffers_size               512k;
+            fastcgi_temp_file_write_size    512k;
+
+            fastcgi_param  PHP_VALUE "open_basedir=$document_root";
+            fastcgi_param  PHP_VALUE "upload_tmp_dir=$document_root/tmp/upload";
+            fastcgi_param  PHP_VALUE "sys_temp_dir=$document_root/tmp/sys";
+    }
+
+
+}                                                                                                                                                                     88,0-1        B
