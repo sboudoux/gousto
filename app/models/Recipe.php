@@ -13,165 +13,185 @@ class Recipe extends \Phalcon\Mvc\Model
      * @Identity
      * @Column(type="integer", length=8, nullable=false)
      */
-    public $id;            
-    /**
-     *
-     * @var string
-     * @Column(type="text", length=255, nullable=true)
-     */
-    public $created_at;
+    private $id;
 
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $updated_at;
+    private $created_at;
 
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $box_type;
+    private $updated_at;
+
+    /**
+     *
+     * @var string
+     * @Column(type="text", length=255, nullable=true)
+     */
+    private $box_type;
     
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $title;
+    private $title;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $slug;
+    private $slug;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $short_title;
+    private $short_title;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $marketing_description;
+    private $marketing_description;
     /**
      *
      * @var integer
      * @Column(type="integer", length=8, nullable=true)
      */
-    public $calories_kcal;
+    private $calories_kcal;
     /**
      *
      * @var integer
      * @Column(type="integer", length=8, nullable=true)
      */
-    public $protein_grams;
+    private $protein_grams;
     /**
      *
      * @var integer
      * @Column(type="integer", length=8, nullable=true)
      */
-    public $fat_grams;
+    private $fat_grams;
     /**
      *
      * @var integer
      * @Column(type="integer", length=8, nullable=true)
      */
-    public $carbs_grams;
+    private $carbs_grams;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $bulletpoint1;
+    private $bulletpoint1;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $bulletpoint2;
+    private $bulletpoint2;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $bulletpoint3;
+    private $bulletpoint3;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $recipe_diet_type_id;
+    private $recipe_diet_type_id;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $season;
+    private $season;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $base;
+    private $base;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $protein_source;
+    private $protein_source;
     /**
      *
      * @var integer
      * @Column(type="integer", length=8, nullable=true)
      */
-    public $preparation_time_minutes;
+    private $preparation_time_minutes;
     /**
      *
      * @var integer
      * @Column(type="integer", length=8, nullable=true)
      */
-    public $shelf_life_days;
+    private $shelf_life_days;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $equipment_needed;
+    private $equipment_needed;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $origin_country;
+    private $origin_country;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $recipe_cuisine;
+    private $recipe_cuisine;
     /**
      *
      * @var string
      * @Column(type="text", length=255, nullable=true)
      */
-    public $in_your_box;
+    private $in_your_box;
     /**
      *
      * @var integer
      * @Column(type="integer", length=8, nullable=false)
      */
-    public $gousto_reference;
+    private $gousto_reference;
+
 
 
     // Should be build dynamically from the database or a pre-defined list of cuisine
     // A static list is plenty enough here to manage validation and filtering.
     private $casAvailableCuisine = ['asian', 'british', 'italian', 'mediterranean', 'mexican'];
+
+
+    /**
+     * I sadly cannot type parameters here (using php7.2) as the declaration would conflict with Phalcon one.
+     * @param $property
+     * @return mixed
+     */
+    public function __get($property) {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function __set($property, $value) {
+        if (property_exists($this, $property)) {
+            $this->$property = $value;
+        }
+    }
 
 
     /**
