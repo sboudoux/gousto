@@ -8,7 +8,7 @@ Build a small restful API to demonstrate coding capabilities and knowledge in re
 
 - What I believe is expected from me... 
   1. Showing my understanding of the technologies (php, restful API, ORM & data storage solution, MVC framework, unit-testing, API testing, composer, git... as many skills I can
-  2. Showing quality code and a reliable app structure (clear segmentation, interfaces, MVC, SOLID, Dry code)
+  2. Showing quality code and a reliable app design and structure (clear segmentation, interfaces, MVC, SOLID, dry code)
   3. Showing I'm serious and commited about this test and willing to put hours of my personal time into this coding test.
   4. Relying on framework and mainstream technologies so I don't build everything from scratch and spend too much time 
  
