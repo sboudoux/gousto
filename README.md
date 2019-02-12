@@ -1,17 +1,16 @@
 
 # README
+## Gousto tech/coding test
 
-## Gousto tech/coding test ?
+- This test
 
-- What am I asked to do?
-
-Build a small, standalone, restful API. 
+Build a small restful API to demonstrate coding capabilities and knowledge in regard sof PHP, OOP, MVC, framework, database and API.
 
 - What I believe is expected from me... 
-  1. Showing my understanding of the technologies (php, restful API, ORM & data storage solution, MVC framework, unit-testing, API testing, composer, git... as much as tech and skills I can
+  1. Showing my understanding of the technologies (php, restful API, ORM & data storage solution, MVC framework, unit-testing, API testing, composer, git... as many skills I can
   2. Showing quality code and a reliable app structure (clear segmentation, interfaces, MVC, SOLID, Dry code)
-  3. showing I'm serious and commited about this test and willing to put hours of my personal time into this coding test.
-  4. relying on framework and mainstream technologies so I don't build everything from scratch and spend too much time 
+  3. Showing I'm serious and commited about this test and willing to put hours of my personal time into this coding test.
+  4. Relying on framework and mainstream technologies so I don't build everything from scratch and spend too much time 
  
 - Key technical aspects for this project (IMO):
 
@@ -30,7 +29,7 @@ I could have used many different technologies and frameworks to build that API. 
   - AWS APi gateway + Lambda: I thought about solutions that would reduce to a minimum the time allocate to building a dev environment and maximise the time coding the business logic you're asking for, but that is not very practical for a coding test.
 
 But I have chosen PhalconPhp: 
-  + extremely performant framework, perfect for a small API  (it's compiled, loaded in memory and cached as a php extension >> no access to the drive)
+  + extremely efficient framework, perfect for a small API  (it's compiled, loaded in memory and cached as a php extension >> no access to the drive)
   + offers a "micro" mode -- stripped down from the router & "dispatcher" (- event management & advanced routing and forwarding options)
   + I have already have a VM ready with phalcon and php7.2 
   + PSR compliant
@@ -44,12 +43,12 @@ But I have chosen PhalconPhp:
 
 Please refer to the doc folder for more documentation and explanations. 
  
- - Starting with the app structure seems a good idea: https://github.com/sboudoux/gousto/doc/app-structure.md
+ - Starting with the app structure seems a good idea: https://github.com/sboudoux/gousto/blob/masterdoc/app-structure.md
  
- - Overview of tests & benchmark: https://github.com/sboudoux/gousto/doc/test-and-performance.md
+ - Overview of tests & benchmark: https://github.com/sboudoux/gousto/blob/masterdoc/test-and-performance.md
                 
- - Auth and why I chose a very simple solution: https://github.com/sboudoux/gousto/doc/auth.md
+ - Auth and why I chose a very simple solution: https://github.com/sboudoux/blob/mastergousto/doc/auth.md
  
- - Watch the demo video: 1 minute overview of the API running / being tested: https://github.com/sboudoux/gousto/doc/demo.webm
- 
+ - Watch the demo video: a 1 minute overview of the API running/being tested: https://github.com/sboudoux/gousto/raw/master/doc/demo.webm
+   (should make things easy if you don't want to build a dev environment)
                                                                                                   
