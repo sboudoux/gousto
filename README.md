@@ -43,11 +43,11 @@ But I have chosen PhalconPhp:
 
 Please refer to the doc folder for more documentation and explanations. 
  
- - Starting with the app structure seems a good idea: https://github.com/sboudoux/gousto/blob/masterdoc/app-structure.md
+ - Starting with the app structure seems a good idea: https://github.com/sboudoux/gousto/blob/master/doc/app-structure.md
  
- - Overview of tests & benchmark: https://github.com/sboudoux/gousto/blob/masterdoc/test-and-performance.md
+ - Overview of tests & benchmark: https://github.com/sboudoux/gousto/blob/master/doc/test-and-performance.md
                 
- - Auth and why I chose a very simple solution: https://github.com/sboudoux/blob/mastergousto/doc/auth.md
+ - Auth and why I chose a very simple solution: https://github.com/sboudoux/gousto/blob/master/doc/auth.md
  
  - Watch the demo video: a 1 minute overview of the API running/being tested: https://github.com/sboudoux/gousto/raw/master/doc/demo.webm
    (should make things easy if you don't want to build a dev environment)
