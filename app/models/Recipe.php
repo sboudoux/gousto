@@ -186,7 +186,6 @@ class Recipe extends \Phalcon\Mvc\Model
             return $this->$property;
         }
     }
-
     public function __set($property, $value) {
         if (property_exists($this, $property)) {
             $this->$property = $value;
@@ -205,8 +204,8 @@ class Recipe extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Overwrite toArray to give the ability to add extra data to the model
-     * (to manage rating)
+     * Overwrite Phalcon's toArray method to give the ability to add extra data to the model
+     * (to manage rating [not currently in the db] or calculated values)
      * @return array
      */
     public function toArray($columns = NULL)
@@ -250,10 +249,11 @@ class Recipe extends \Phalcon\Mvc\Model
     */
     public function initialize()
     {
-        //Allow partial miodel updates
+        //Allow partial model updates
         $this->useDynamicUpdate(true);
         
         // define model relations if necessary
+        // > none here
     }
 
     /**

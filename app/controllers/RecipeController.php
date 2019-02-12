@@ -4,35 +4,32 @@ namespace App\Controllers;
 
 //Rest & error management
 use App\Controllers\HttpExceptions\Http400Exception;
-use App\Controllers\HttpExceptions\Http422Exception;
 use App\Controllers\HttpExceptions\Http500Exception;
-use App\Controllers\AbstractController;
-use App\Services\AbstractService;
-use App\Services\ServiceException;
 
 //business logic
-use App\Services\RecipeService;
+use App\Services\RecipeService;  // (currently not used, but here for reference)
 use Phalcon\Filter;
 use App\Models\Recipe as RecipeModel;
 
 /**
- * Operations with Users: CRUD
+ * Operations with recipe: CRU{D}
  */
 class RecipeController extends AbstractController
 {
     /**
-     * Catchall endpoint for all the /recipe/* request
+     * Catchall endpoint for all the /recipe/* requests
      * @version 1.0
-     * @access public - HTTP::All (map) 
-     * @return Array 
+     * @access public - HTTP::All(map)
+     * @return null
     */
-    public function notfoundAction()
+    public function notfoundAction() : void
     {
         throw new \App\Controllers\HttpExceptions\Http404Exception(
           _('API endpoint not available for the HTTP method you are using.'),
           \App\Controllers\AbstractController::ERROR_NOT_FOUND,
           new \Exception('URI not found: ' . $this->getDi()->getRequest()->getMethod() . ' ' . $this->getDi()->getRequest()->getURI())
         );
+
     }
     
     
@@ -42,7 +39,7 @@ class RecipeController extends AbstractController
     
     
     /**
-     * Return one recipe identified by its ID  in the database
+     * Return one recipe identified by its ID in the csv/database
      * @version 1.0
      * @access public - HTTP::GET
      * @return \App\Models\Recipe 
@@ -57,9 +54,8 @@ class RecipeController extends AbstractController
             throw new Http400Exception("Bad HTTP method - requires updates to be made using POST ");
         }
         
-        
+        // Sanitize ecipe Id and fetch the record/model to return
         $iRecipeId = (int)$this->filter->sanitize($piRecipeId, 'int');
-        //$oResult = $this->di->getDb()->fetchOne("SELECT * FROM recipe where id = :id ", \Phalcon\Db::FETCH_ASSOC, ['id' => $iRecipeId]);
         $oRecipe = RecipeModel::findFirst($iRecipeId);
         if(empty($oRecipe)) {
             return null;
@@ -102,7 +98,9 @@ class RecipeController extends AbstractController
             return null;
         }
         
-        // Load model with received data. Will allow partial updates if model validator allows it
+        // Load model with request data.
+        // This allows partial updates if necessary... Validation is done at the model level, either manually as shown below
+        // or automatically before update/create calls
         foreach($this->request->getPut() as $sParam => $vParamValue) {
             $oRecipe->{$sParam} = $vParamValue;
         }
@@ -122,7 +120,7 @@ class RecipeController extends AbstractController
     }
     
     /**
-     * Return one recipe identified by its ID  in the database
+     * Add a new recipe to the database identified by its ID  in the database
      * @version 1.0
      * @access public - HTTP::POST
      * @return \App\Models\Recipe 
@@ -140,13 +138,14 @@ class RecipeController extends AbstractController
         if( mb_strlen($sRecipeTitle) < 5) {
             throw new Http400Exception("Bad data - invalid POST data ");
         }
-        
-       $oRecipe = new RecipeModel();
-       foreach($this->request->getPut() as $sParam => $vParamValue) {
+
+        //No need to worry about the recipe ID here, on reate the model will remove it automatically
+        $oRecipe = new RecipeModel();
+        foreach($this->request->getPut() as $sParam => $vParamValue) {
            $oRecipe->{$sParam} = $vParamValue;
-       }
+        }
         
-        //I'm goign to use the model validation. So I simply update the model here 
+        // Using the model validation, to ensure data is corret
         if(!$oRecipe->validation()) {
             //var_dump($oRecipe);
             throw new Http400Exception("Bad parameters - data validation failed: ". $oRecipe->stringifyError());
@@ -190,8 +189,9 @@ class RecipeController extends AbstractController
             return null;
         }
 
-        // I don't have anywhere to store the rating (not in teh csv),
-        // So I'll return a successful adding a "rating" column to the model
+        // I don't have anywhere to store the rating (not in the csv >> not in the db). I could add a column in the db, but then rating would be
+        // similar to a partial update request...
+        //So for this test sake, I'll return a successful response and add a "rating" attribute to the model without saving it
         $oRecipe->rating = $iRating;
 
         return $oRecipe;
@@ -220,12 +220,14 @@ class RecipeController extends AbstractController
             throw new Http400Exception("Bad HTTP method - requires updates to be made using GET ");
             return null;
         }
-                
+
+        // Mange pagination parameters:
+        // PageNumber & NumberPerPage starts at 1. No point of having a page 0 or returning 0 records.
         $iPageNumber = ((int)$psPageNumber < 1) ? 1 : (int)$psPageNumber;
         $iNumberPerPage = ((int)$psNumberPerPage < 1) ? 10 : (int)$psNumberPerPage; 
         $aQueryParams = [
             'start' => ($iPageNumber-1) * $iNumberPerPage,
-            'end' => $iNumberPerPage,
+            'offset' => $iNumberPerPage,
         ];
         
         // Manage cuisine type filter
@@ -239,14 +241,14 @@ class RecipeController extends AbstractController
                 return null;
             }
 
-            $sQuery = 'SELECT * FROM App\Models\Recipe WHERE recipe_cuisine = :cType: ORDER BY id ASC LIMIT {start:int}, {end:int} ';
+            $sQuery = 'SELECT * FROM App\Models\Recipe WHERE recipe_cuisine = :cType: ORDER BY id ASC LIMIT {start:int}, {offset:int} ';
             $aQueryParams['cType'] = $psCuisineType;
         } 
         else {
-            $sQuery = 'SELECT * FROM App\Models\Recipe ORDER BY id ASC LIMIT {start:int}, {end:int} ';
+            $sQuery = 'SELECT * FROM App\Models\Recipe ORDER BY id ASC LIMIT {start:int}, {offset:int} ';
         }
 
-        // Execute query containing filter and/or pagination
+        // Executing filtered and paginated query
         $oRecipes = $this->getDi()->get('modelsManager')->executeQuery($sQuery, $aQueryParams);
         if(empty($oRecipes)) {
              return null;

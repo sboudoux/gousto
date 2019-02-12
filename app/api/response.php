@@ -3,22 +3,23 @@
 
 //  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -
 //  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -
-/* Response management : encoding & error
+/**
+ * Response management : encoding & error
 
- We need to processs the controller/service responses o the API always return the correct/json-encoded answer
- In real scenario, I would build an automatic entity conversion based on model structure/metadata, but to not spend too much time on this test, I will simply
- convert a few specific data types to json.
+ We need to process the controller/service responses so the API always return the correct/json-encoded response.
+ In real scenarios, I would build the entity conversion/encoding directly based on model data structure using metadata, but to not spend too much time on this test, I will simply
+ convert the RecipeModel to json.
 
- Data I will consider correct and return as json: scalar, recipe models, and arrays of models.
- Anything empty response from the controller will lead to a HTTP-204
+ Data the API will consider valid to return as json: scalar, array, recipe models
+ Any empty response from the controller will lead to a HTTP-204
  Anything else will be considered an error Exception('Bad Response');
 
-
-*/
+ *
+ */
 
 $app->after(
     function () use ($app) {
-        // Getting the return value of method
+        // Fetched data returned by the controllers
         $vReturnData = $app->getReturnedValue();
 
 
@@ -33,7 +34,7 @@ $app->after(
             $app->response->setStatusCode('204', 'No Content');
         }
         elseif (is_array($vReturnData) || is_scalar($vReturnData)) {
-            // Transforming arrays to JSON
+            // Converting data to JSON
             $app->response->setContent(json_encode($vReturnData));
 
         } else {
@@ -41,7 +42,7 @@ $app->after(
             throw new Exception('Bad Response');
         }
 
-        // Sending response to the client
+        // Sending HTTP response to the client
         $app->response->send();
     }
 );

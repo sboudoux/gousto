@@ -7,10 +7,16 @@ try {
     // Boostrapping the app, loading config and phalcon core services
     $config = require(__DIR__ . '/../app/bootstrap/bootstrap.php');
 
+
     // Processing request
     $app->handle();
         
-} 
+}
+
+//  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -
+//  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -  -  =  -
+//Error management
+
 catch (AbstractHttpException $e) {
     $response = $app->response;
     $response->setStatusCode($e->getCode(), $e->getMessage());

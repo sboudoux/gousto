@@ -11,5 +11,11 @@ use App\Models\Recipe;
  */
 class RecipeService extends AbstractService
 {
-	// To implement the recipe related code & business logic 
+	/**
+	 * To implement the recipe related code & business logic
+     * In this test/exercise, there isn't any business logic worth moving from the Recipe controller to here.
+     * In a more significant project, we would look for improving readability and drying the controllers code up by using services
+     *
+	 */
+
 }

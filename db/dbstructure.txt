@@ -1,7 +1,9 @@
+sqlite3 gousto;
+
 CREATE TABLE recipe(
 id INTEGER PRIMARY KEY AUTOINCREMENT, 
 created_at, 
-updated_at, 
+updated_at,
 box_type, 
 title, 
 slug, 
@@ -33,3 +35,4 @@ gousto_reference INTEGER(8) NOT NULL
 .mode csv
 .import /srv/www/phalconApi/db/recipe-data.csv recipe 
 select * from recipe;
+.quit;

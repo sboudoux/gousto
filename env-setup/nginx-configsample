@@ -39,7 +39,7 @@ server {
         rewrite ^/(.*)$ /index.php?_url=/$1;
     }
 
-    client_max_body_size 2000M;
+    client_max_body_size 500M;
 
     # Remove trailing slash to please routing system.
     if (!-d $request_filename) {
@@ -51,12 +51,6 @@ server {
     error_page  404              /404.html;
     location = /40x.html {
     }
-
-    # redirect server error pages to the static page /50x.html
-    #
-    #error_page   500 502 503 504  /50x.html;
-    #location = /50x.html {
-    #}
 
     location ~ \.php$ {
             try_files $uri =404;
@@ -80,6 +74,4 @@ server {
             fastcgi_param  PHP_VALUE "upload_tmp_dir=$document_root/tmp/upload";
             fastcgi_param  PHP_VALUE "sys_temp_dir=$document_root/tmp/sys";
     }
-
-
-}                                                                                                                                                                     88,0-1        B
+}
