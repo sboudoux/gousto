@@ -43,6 +43,7 @@ echo '  >>> curl -k -X PUT https://phalcon.api.gousto/recipe/1/rate/3 -H "Accept
 echo ""
 curl -k -X PUT https://phalcon.api.gousto/recipe/1/rate/3 -H "Accept: application/json"  -H "Content-Type: application/json" -H "gousto-auth-token: abcdef123456"
 
+echo "";
 echo "  -  -  -  -  -  -  -  -  -  -  -  -  ";
 echo "Perforance benchmark";
 echo "";
@@ -57,8 +58,12 @@ echo "";
 echo "  -  -  -  -  -  -  -  -  -  -  -  -  ";
 echo "To wrap up, Postman test suite: ";
 echo "";
-echo "";
-sleep 5;
+echo "newman run tests/api/Gousto\ restful\ api.postman_collection.json -k";
+sleep 3;
 
+newman run tests/api/Gousto\ restful\ api.postman_collection.json -k
+
+
+sleep 2;
 echo "Thank you for watching ! ";
 
