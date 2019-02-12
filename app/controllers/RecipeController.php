@@ -127,7 +127,7 @@ class RecipeController extends AbstractController
      * @access public - HTTP::POST
      * @return \App\Models\Recipe 
      */
-    public function addRecipeAction() : ?\App\Models\Recipe
+    public function createRecipeAction() : ?\App\Models\Recipe
     {
         //DP: control parameters, ranges and http method
         if(!$this->request->isPost()) {

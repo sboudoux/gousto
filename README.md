@@ -64,26 +64,6 @@ Ihat simply means:
   - or as a parameter $psRecipeTitle (p for parameter, s for string)
   - an array define as a class attribute;  $caRecipes  (c for class, a for array)   
   ...
-
-
-## testing 
-
-  1. phpunit 
-  I'll write some basic unitest to show I know how to, will create a small testsuite in phpunit.xml, but this will be fairly limited to avoid spending too much tme on it
-  ```
-  cd tests/phpunit; 
-  ll /tests/phpunit/testsuites/
-  phpunit --testsuite gousto
-  ```
-  
-  2. Api testing with Postman:
-  I'll store my API test suite in /tests/api/ Gousto... .json
-  
-
-## MISC NOTES
-
-CSV data structure: strings instead of IDs (cuisine, country, box_type)... 
-
  
 
 

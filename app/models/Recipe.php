@@ -210,8 +210,12 @@ class Recipe extends \Phalcon\Mvc\Model
      * @param string $psCuisine
      * @return bool
      */
-    public function isCuisineAvailable($psCuisine) : bool
+    public function isCuisineAvailable(string $psCuisine) : bool
     {
+        if(empty($psCuisine)) {
+            return false;
+        }
+
         if(in_array($psCuisine, $this->casAvailableCuisine)) {
             return true;
         }
@@ -246,13 +250,17 @@ class Recipe extends \Phalcon\Mvc\Model
     /**
      * Use db/model event handler to automatically validate the model data on save/update
      * Can also been launched manually for data validation
+     *
+     * NOTE: since I'm only using simple models (without metadata, type/bindings, required options...),
+     * I'll make this validation method very basic
+     *
      * @return boolean
     */
     public function validation() : bool
     {
         $bValidated = true;
         
-        // need to work for create & update 
+        // This test needs to work for create & update
         if(isset($this->id) && (int)$this->id < 1) {
             $bValidated = false;
             $this->appendMessage(new Message('recipe ID is not valid'));
@@ -263,7 +271,6 @@ class Recipe extends \Phalcon\Mvc\Model
             $this->appendMessage(new Message('recipe TITLE is not valid'));
         }
         
-        //TODO: check other fields/columns
         if(empty($this->slug) || mb_strlen($this->slug) < 5 || mb_strlen($this->slug) > 64) {
             $bValidated = false;
             $this->appendMessage(new Message('recipe SLUG is not valid'));
@@ -277,11 +284,10 @@ class Recipe extends \Phalcon\Mvc\Model
             $bValidated = false;
             $this->appendMessage(new Message('recipe RECIPE_CUISINE is not matching any category'));
         }
-        
-        
-        
-        // x23 columns not necessary for this test
-        // NOTE: I will only focus here on attributes / columns relevant for this test (id, title, slug, and cuisine type)
+
+
+        // And so on x23 columns. I believe this is not necessary for this test
+        // NOTE: I have only focused here on the attributes/columns relevant for this test (id, title, and cuisine type)
         //TODO: check other fields/columns
         //TODO: check other fields/columns
         //TODO: check other fields/columns

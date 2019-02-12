@@ -3,29 +3,9 @@
 use App\Controllers\AbstractHttpException;
 
 try {
-    // Loading app Configs
-    $config = require(__DIR__ . '/../app/config/config.php');
 
-
-    // Phalcon Autoloading classes - compatible with composer autoloader
-    require __DIR__ . '/../app/config/loader.php';
-
-
-    // Initializing application & the dependency injector ($di)
-    /** @var \Phalcon\DI\FactoryDefault $di */
-    $di = require __DIR__ . '/../app/config/di.php';
-    $app = new \Phalcon\Mvc\Micro();
-    $app->setDI($di);
-
-
-    // Setting up routing
-    require __DIR__ . '/../app/config/routes.php';
-
-
-    // load the API auth & response management
-    require __DIR__ . '/../app/api/auth.php';
-    require __DIR__ . '/../app/api/response.php';
-
+    // Boostrapping the app, loading config and phalcon core services
+    $config = require(__DIR__ . '/../app/bootstrap/bootstrap.php');
 
     // Processing request
     $app->handle();
